@@ -1,0 +1,64 @@
+main{
+    position: relative
+}
+#result{
+    top:0;
+    left:0;
+    margin:0%;
+    height:50%;
+    width:50%;
+    background-image: url("food.jpg");
+    opacity: 0.2;
+    border: 2px solid black;
+    padding: 20px;
+    overflow: auto;
+    float: left;
+}
+#restContent{
+    position:absolute;
+    top:0;
+    left:0;
+    margin:0%;
+    height: 50%;
+    width: 50%;
+    overflow:auto;
+    border: 2px solid black;
+    padding: 20px;
+    font-size: large;
+    font-family: Calibri;
+    font-weight: bold;
+    opacity: 1;
+}
+#result2{
+    top:0;
+    margin:0%;
+    height: 50%;
+    width: 50%;
+    background-image:url(news.jpg);
+    opacity: 0.1;
+    overflow:auto;
+    float: left;
+    border: 2px solid black;
+    padding: 20px;
+}
+#newsContent{
+    position: absolute;
+    top:55%;
+    left: 0;
+    margin:0%;
+    height: 50%;
+    width: 50%;
+    overflow:auto;
+    float: left;
+    border: 2px solid black;
+    padding: 20px;
+    font-size: large;
+    font-family: Calibri;
+    font-weight: bold;
+    opacity:1;
+}
+#chatInput {position:relative;  left: 1%;}
+#chatBox {position:relative; left: 1%;font-size: large;}
+#textDisp{position:relative;left:1%;font-size: larger;font-family: Calibri;font-weight: bolder;
+    font-style: italic; color: deeppink;}
+#chatText{position:relative;left:1%;font-size: larger;font-family: Calibri;font-weight: bolder;}

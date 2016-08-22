@@ -1,0 +1,25 @@
+<html>
+<head><title>YQL and RSS: Yahoo Top News Stories</title>
+    <link rel="stylesheet" type="text/css" href="styleInfo.css">
+
+</head>
+<body bgcolor ="#ffe4e1" >
+
+<script src="http://cdn.pubnub.com/pubnub-3.14.5.min.js"></script>
+<script type="text/javascript", src="publisher.js"></script>
+<div id="main"></div>
+<div id="result"></div>
+<div id = "restContent"></div>
+<div id = "result2"></div>
+<div id="newsContent"></div>
+<p id="textDisp">Bored??? what better topics than food for the needy and world news for the nerdy, I hear U!
+    <br/><br/>Invite like-minded friends to subscribe to this app on PubNub today! </p>
+<p id="chatText">Chat with people who have subscribed to our channel here...</p>
+<div><input id="chatInput" placeholder="Lets chat :)" /></div>
+<br/>
+<div id="chatBox" />
+<script>
+    getNewsAndRestDataAndSetChat();
+</script>
+</body>
+</html>
