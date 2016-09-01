@@ -1,4 +1,6 @@
-package prep;
+/*
+Validate if a given string is numeric.
+*/
 
 public class Validate {
 	

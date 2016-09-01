@@ -1,4 +1,7 @@
-package prep;
+/*
+Letter Phone
+Given a digit string, return all possible letter combinations that the number could represent.
+*/
 
 import java.util.ArrayList;
 import java.util.HashMap;

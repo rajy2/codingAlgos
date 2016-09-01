@@ -1,4 +1,8 @@
-package prep;
+/*
+Given an unsorted array, find the maximum difference between the successive elements in its sorted form.
+
+Try to solve it in linear time/space.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;

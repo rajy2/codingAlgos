@@ -1,4 +1,6 @@
-package prep;
+/*
+Print concentric rectangular pattern in a 2d matrix. 
+*/
 
 import java.util.ArrayList;
 

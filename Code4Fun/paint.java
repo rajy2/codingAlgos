@@ -1,11 +1,47 @@
-package prep;
+/*
+You have to paint N boards of length {A0, A1, A2, A3 … AN-1}. There are K painters available and you are also given how much time a painter takes to paint 1 unit of board. You have to get this job done as soon as possible under the constraints that any painter will only paint contiguous sections of board.
+
+2 painters cannot share a board to paint. That is to say, a board
+cannot be painted partially by one painter, and partially by another.
+A painter will only paint contiguous boards. Which means a
+configuration where painter 1 paints board 1 and 3 but not 2 is
+invalid.
+Return the ans % 10000003
+
+Input :
+K : Number of painters
+T : Time taken by painter to paint 1 unit of board
+L : A List which will represent length of each board
+
+Output:
+     return minimum time to paint all boards % 10000003
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class paint {
 	
-private boolean ispossible(int A, int B, ArrayList<Integer> C, long time) {
+public int paint(int a, int b, ArrayList<Integer> c) {
+	   if(c.size()==0)
+	        return 0;
+	  long l=0,r=0,mid=0,ans=Long.MAX_VALUE;
+	  for(int i = 0; i<c.size();i++)
+	  {
+		  r+=c.get(i);
+	  }
+	  long mod=10000003;
+	  while(l<=r){
+	      mid=(l+r)>>1;
+	      if(ispossible(a,c,mid)){
+	          ans=Math.min(ans,mid);
+	          r=mid-1;
+	      }else l=mid+1;
+	  }
+	  //System.out.println(ans);
+	  return (int) (ans*b % mod);
+	}
+	private boolean ispossible(int A,ArrayList<Integer> C, long time) {
 	    
 	    int n = C.size();
 	    int index = 0;
@@ -15,9 +51,9 @@ private boolean ispossible(int A, int B, ArrayList<Integer> C, long time) {
 	        
 	        total = 0;
 	        
-	        while (total < time*B && index < n) {
-	            total += (1L * C.get(index) * B);
-	            if (total > time*B)
+	        while (total < time && index < n) {
+	            total += C.get(index);
+	            if (total > time)
 	                break;
 	            index++;
 	        }
@@ -27,55 +63,7 @@ private boolean ispossible(int A, int B, ArrayList<Integer> C, long time) {
 	        return false;
 	    
 	    return true;
-	}
-	/*boolean ispossible(ArrayList<Integer> C, long maxUnitsToPaint, int painter){
-	    long temp=0;
-	    int n=C.size();
-	    int i=0,index=0;
-	    boolean flag = false;
-	    for(i=0; i<n;)
-	    {
-	    	while(temp < maxUnitsToPaint && i<n)
-	    	{
-	    		temp = temp+C.get(i);
-	    		if(temp < maxUnitsToPaint) i++;
-	    		else if(temp == maxUnitsToPaint)
-	    		{
-	    			flag=true;
-	    			break;
-	    		}
-	    		else break;
-	    	}
-	    	if(index <painter && !flag)
-	    		{
-	    		index++;
-	    		temp = 0;
-	    		}
-	    	else break;
-	    }
-	    if(!flag) return false;
-	    return true;
-	}*/
-	public int Paint(int A, int B, ArrayList<Integer> C) {
-	   if(C.size()==0)
-	        return 0;
-	  long l=0,r=0,mid=0,ans=Long.MAX_VALUE;
-	  for(int i = 0; i<C.size();i++)
-	  {
-		  r+=C.get(i);
-	  }
-	  long mod=10000003;
-	  while(l<=r){
-	      mid=(l+r)>>1;
-	      if(ispossible(A,B,C,mid)){
-	          ans=Math.min(ans,mid);
-	          r=mid-1;
-	      }else l=mid+1;
-	  }
-	  System.out.println(ans);
-	  return (int) (ans*B % mod);
-	}
-	
+	}	
 	public static void main(String args[])
 	{
 		int k= 5;
@@ -83,7 +71,7 @@ private boolean ispossible(int A, int B, ArrayList<Integer> C, long time) {
 		ArrayList<Integer> arr = new ArrayList<Integer>();
 		arr.addAll(Arrays.asList(658, 786, 531, 47, 169, 397, 914 ));
 		paint obj = new paint();
-		int a=obj.Paint(k,t,arr);
+		int a=obj.paint(k,t,arr);
 		System.out.println(a);
 	}
 

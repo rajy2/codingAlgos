@@ -1,4 +1,11 @@
-package prep;
+/*
+Pretty print a json object using proper indentation.
+
+Every inner brace should increase one indentation to the following lines.
+Every close brace should decrease one indentation to the same line and the following lines.
+The indents can be increased with an additional ‘\t’
+*/
+
 
 import java.util.ArrayList;
 

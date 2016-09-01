@@ -1,4 +1,6 @@
-package prep;
+/*
+Given a column title as appears in an Excel sheet, return its corresponding column number.
+*/
 
 public class ExcelColumToNum {
 	public static void main(String args[])

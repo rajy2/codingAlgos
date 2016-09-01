@@ -1,4 +1,6 @@
-package prep;
+/*
+Given preorder and inorder traversal of a tree, construct the binary tree.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,8 +21,7 @@ public class PreInTree {
 	    return root;
 	}
 	int index=0;
-	private TreeNode build(TreeNode root, ArrayList<Integer> preorder, ArrayList<Integer> inorder,
-	int low, int high)
+	private TreeNode build(TreeNode root, ArrayList<Integer> preorder, ArrayList<Integer> inorder,int low, int high)
 	{
 		index++;
 	    if(low>high) return null;

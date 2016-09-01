@@ -1,5 +1,4 @@
-package prep;
-
+/* Given a binary tree, determine if it is height-balanced.*/
 
 public class BalancedTree {
 	public boolean checkBalance(Node root){
@@ -10,23 +9,14 @@ public class BalancedTree {
 			return false;
 		}
 	}
-	public int isBalanced(Node root){
-		if(root==null){
-			return 0;
-		}
-		int leftH = isBalanced(root.left);
-		if(leftH==-1){
-			return -1;
-		}
-		int rightH = isBalanced(root.right);
-		if(rightH==-1){
-			return -1;
-		}
-		int diff = leftH-rightH;
-		if(Math.abs(diff)>1){
-			return -1;
-		}
-		return 1 + Math.max(leftH, rightH);
+	public int isBalanced(Node a){
+		 if(a==null) return 0;
+	    int leftHeight = checkBal(a.left);
+	    if(leftHeight == -1) return -1;
+	    int rightHeight = checkBal(a.right);
+	    if(rightHeight == -1) return -1;
+	    if(Math.abs(leftHeight - rightHeight) > 1) return -1;
+	    else return 1+Math.max(leftHeight, rightHeight);
 	}
 	public static void main(String args[]){
 		Node root = new Node(5);

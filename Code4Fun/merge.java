@@ -1,4 +1,6 @@
-package prep;
+/*
+Given two sorted integer arrays A and B, merge B into A as one sorted array.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,12 +17,11 @@ public class merge {
 	}
 	public void merge(ArrayList<Integer> a, ArrayList<Integer> b) {
 	    int i, j=i=0;
-
 	    while(i<a.size() && j<b.size())
 	    {
-	        if(a.get(i).intValue() == b.get(j).intValue())
+	        if(a.get(i).compareTo(b.get(j)) == 0)
 	        {
-	            if(i+1<a.size()) a.add(i+1,b.get(i));
+	            if(i+1<a.size()) a.add(i+1,b.get(j));
 	            else a.add(b.get(j));
 	            i++;
 	            j++;
@@ -32,6 +33,11 @@ public class merge {
 	            i++;
 	        }
 	        else i++;
+	    }
+	    while(j<b.size())
+	    {
+	        a.add(b.get(j));
+	        j++;
 	    }
 	}
 

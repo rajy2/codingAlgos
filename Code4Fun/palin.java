@@ -1,4 +1,9 @@
-package prep;
+/*
+Determine whether an integer is a palindrome. Do this without extra space.
+
+A palindrome integer is an integer x for which reverse(x) = x where reverse(x) is x with its digit reversed.
+Negative numbers are not palindromic.
+*/
 
 public class palin {
 	public static void main(String args[])
@@ -15,20 +20,14 @@ public class palin {
 	    {
 	        res = res/10;
 	        factor = factor*10;
-	        System.out.println(factor);
 	    }
-	    int m = factor;
-	    int n = 10;
 	    
-	    //while(factor>=m/2)
-	    while(a>1)
+	    while(a!=0)
 	    {
-	        if(a/factor != a%n) return false;
+	        if(a/factor != a%10) return false;
 	        a=(a%factor)/10;
 	        factor = factor/100;
-	        
 	    }
-	    System.out.println("true");
 	    return true;
 	}
 

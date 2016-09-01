@@ -1,4 +1,10 @@
-package prep;
+/*
+Implement the next permutation, which rearranges numbers into the numerically next greater permutation of numbers.
+
+If such arrangement is not possible, it must be rearranged as the lowest possible order ie, sorted in an ascending order.
+
+The replacement must be in-place, do not allocate extra memory.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,6 @@
-package prep;
+/*
+Given inorder and postorder traversal of a tree, construct the binary tree.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;

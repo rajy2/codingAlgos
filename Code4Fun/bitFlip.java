@@ -1,43 +1,42 @@
-package prep;
+/*
+You are given a binary string(i.e. with characters 0 and 1) S consisting of characters S1, S2, …, SN. In a single operation, you can choose two indices L and R such that 1 ? L ? R ? N and flip the characters SL, SL+1, …, SR. By flipping, we mean change character 0 to 1 and vice-versa.
+
+Your aim is to perform ATMOST one operation such that in final string number of 1s is maximised. If you don’t want to perform the operation, return an empty array. Else, return an array consisting of two elements denoting L and R. If there are multiple solutions, return the lexicographically smallest pair of L and R.
+*/
 
 public class bitFlip {
 	public static void main(String[] args)
 	{
 		String a = "00011000";
-		//int i = Integer.parseInt(a,2);
-		int maxDiff = 0;
-		int flipStartIndex = 0;
-		int flipEndIndex = 0;
-		int onesToFlip = 0;
-		int totalNumberOfOnes = 0;
-
-		int currentDiff = 0;
-		int currentStart = 0;
-		int currentOnesToFlip = 0;
-
-		for (int i = 0; i < a.length(); i++) {
-		    if (a.charAt(i) == '0') {
-				currentDiff -= 1;
-		    } else {
-				currentDiff += 1;
-				currentOnesToFlip++;
-				totalNumberOfOnes++;
-		    }
-		    if (currentDiff < maxDiff) {
-				maxDiff = currentDiff;
-				flipStartIndex = currentStart;
-				flipEndIndex = i;
-				onesToFlip = currentOnesToFlip;
-		    } else if (currentDiff > 0) {
-				currentDiff = 0;
-				currentStart = i + 1;
-				currentOnesToFlip = 0;
-		    }
-		}
-		System.out.println(flipEndIndex - flipStartIndex + 1 - onesToFlip +   totalNumberOfOnes - onesToFlip);
-
-		//System.out.println(i);
-		//System.out.println(Integer.toBinaryString(i));
+           bitFlip o = new bitFlip();
+           o.flip(a);
 	}
+
+public ArrayList<Integer> flip(String A) {
+        int L = 0, R =0, currDiff = 0, maxDiff = 0, currStart = 0;
+        for(int i = 0; i<A.length(); i++)
+        {
+            if(A.charAt(i)=='0') currDiff++;
+            else currDiff--;
+            if(currDiff > maxDiff)
+            {
+                maxDiff = currDiff;
+                L = currStart;
+                R = i;
+            }
+            else if(currDiff < 0)
+            {
+                currStart = i+1;
+                currDiff =0;
+            }
+        }
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(maxDiff != 0)
+        {
+            res.add(L+1);
+            res.add(R+1);
+        }
+        return res;
+    }
 
 }

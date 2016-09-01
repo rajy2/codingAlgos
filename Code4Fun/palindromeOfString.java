@@ -1,4 +1,8 @@
-package prep;
+/*
+Given a string s, partition s such that every string of the partition is a palindrome.
+
+Return all possible palindrome partitioning of s.
+*/
 
 import java.util.ArrayList;
 
@@ -10,58 +14,49 @@ public class palindromeOfString {
 		o.partition("efe");
 	}
 	
-	public ArrayList<ArrayList<String>> partition(String s) {
-		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-	 
-		if (s == null || s.length() == 0) {
-			return result;
-		}
-	 
-		ArrayList<String> partition = new ArrayList<String>();//track each possible partition
-		addPalindrome(s, 0, partition, result);
-		for(ArrayList<String> str: result)
-		{
-			for(String e : str)	System.out.println(e);
-		}
-		return result;
+	public ArrayList<ArrayList<String>> partition(String a) {
+	    ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
+	    ArrayList<String> temp = new ArrayList<String>();
+	    if(a.length() == 0) return res;
+	    else if(a.length() == 1)
+	    {
+	        temp.add(a);
+	        res.add(temp);
+	        return res;
+	    }
+	    palin(a,res, 0, temp);
+	    return res;
 	}
-	 
-	private void addPalindrome(String s, int start, ArrayList<String> partition,
-			ArrayList<ArrayList<String>> result) {
-		//stop condition
-		if (start == s.length()) {
-			
-			ArrayList<String> temp = new ArrayList<String>(partition);
-			result.add(temp);
-			
-			return;
-		}
-	 
-		for (int i = start + 1; i <= s.length(); i++) {
-			String str = s.substring(start, i);
-			if (isPalindrome(str)) {
-				partition.add(str); 
-				addPalindrome(s, i, partition, result);
-				partition = new ArrayList<String>();
-				//partition.remove(partition.size() - 1);
-			}
-		}
+	public void palin(String a, ArrayList<ArrayList<String>> res, int index, ArrayList<String> temp)
+	{
+	    if(index == a.length())
+	    {
+	        ArrayList<String> p = new ArrayList<String>(temp);
+	        res.add(p);
+	        return;
+	    }
+	    for(int i = index+1; i<=a.length();i++)
+	    {
+	        String str = a.substring(index, i);
+	        if(isPalin(str))
+	        {
+	            temp.add(str);
+	            palin(a,res,i,temp);
+	            temp.remove(temp.size()-1);
+	        }
+	    }
+	    
 	}
-	 
-	private boolean isPalindrome(String str) {
-		int left = 0;
-		int right = str.length() - 1;
-	 
-		while (left < right) {
-			if (str.charAt(left) != str.charAt(right)) {
-				return false;
-			}
-	 
-			left++;
-			right--;
-		}
-	 
-		return true;
+	public boolean isPalin(String str)
+	{
+	    int left=0, right=str.length()-1;
+	    while(left<=right)
+	    {
+	        if(str.charAt(left) != str.charAt(right)) return false;
+	        left++;
+	        right--;
+	    }
+	    return true;
 	}
 
 }

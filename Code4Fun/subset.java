@@ -1,4 +1,12 @@
-package prep;
+/*
+Given a set of distinct integers, S, return all possible subsets.
+
+ Note:
+Elements in a subset must be in non-descending order.
+The solution set must not contain duplicate subsets.
+Also, the subsets should be sorted in ascending ( lexicographic ) order.
+The list is not necessarily sorted.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,25 +22,24 @@ public class subset {
 		o.subsets(t);
 	}
 	
-	public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> S) {
-        // write your code here
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        result.add(new ArrayList<Integer>());
-        if (S == null || S.size() == 0) {
-            return result;
-        }
-        Collections.sort(S);
-        helper(result, S, new ArrayList<Integer>(), 0);
-        return result;
-    }
-    
-    private void helper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> S, ArrayList<Integer> cur, int i) {
-        for (int j = i; j < S.size(); j++) {
-            cur.add(S.get(j));
-            if(!result.contains(cur)) result.add(new ArrayList<Integer>(cur));
-            helper(result, S, cur, j + 1);
-            cur.remove(cur.size()-1);
-        }
-    }
+	public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> a) {
+	    ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+	    ArrayList<Integer> temp = new ArrayList<Integer>();
+	    res.add(temp);
+	    if(a.size()==0) return res;
+	    Collections.sort(a);
+	    generateSubsets(a,res,0,temp);
+	    return res;
+	}
+	public void generateSubsets(ArrayList<Integer> a,ArrayList<ArrayList<Integer>> res, int index,ArrayList<Integer> temp)
+	{
+	    for(int i = index; i<a.size(); i++)
+	    {
+	        temp.add(a.get(i));
+	        res.add(new ArrayList<Integer>(temp));
+	        generateSubsets(a,res,i+1,temp);
+	        temp.remove(temp.size()-1);
+	    }
+	}
 
 }

@@ -1,4 +1,17 @@
-package prep;
+/*
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Your goal is to reach the last index in the minimum number of jumps.
+
+Example :
+Given array A = [2,3,1,1,4]
+
+The minimum number of jumps to reach the last index is 2. (Jump 1 step from index 0 to 1, then 3 steps to the last index.)
+
+If it is not possible to reach the end index, return -1.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,23 +27,44 @@ public class minJump {
 	}
 	
 	public int jump(ArrayList<Integer> a) {
-	    if(a==null || a.size()==0 || a.size()==1) return 0;
-	    int n = a.size();
-	    boolean feasible = true;
-        int lend = 1, jump_cnt = 0,i = 0;
-        while (feasible)
-        {
-            int lr = 0;
-            for ( ; i < lend; ++i)
-            {
-                if (i + a.get(i) > lr) lr = i + a.get(i) + 1;
-            }
-            if (lr >= n) break;
-            feasible = (lend < lr);
-            lend = lr;
-            jump_cnt++;
-        }
-        return feasible ? jump_cnt : -1;
+	    
+	
+	if (a == null || (a.size() > 1 && a.get(0) == 0))
+	        return -1;
+	        
+	    if (a.size() == 1)
+	        return 0;
+	        
+	    int count = a.get(0);
+	    int n=a.size();
+	    int max = 0;
+	    int steps = 0;
+	    
+	   
+	    for (int i = 1; i < n; i++) {
+	        
+	        count--;
+	        max--;
+	        max = Math.max(max, a.get(i));
+	        
+	        if (i == n - 1) {
+	            return steps + 1;
+	        }
+	        
+	        if (count == 0) {
+	            if (max < 0)
+	                return -1;
+	            
+	            count = max;
+	            max = 0;
+	            steps++;
+	        }
+	        
+	    }
+        
+        
+	    
+	    return steps;
 	}
 
 }

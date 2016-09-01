@@ -1,4 +1,8 @@
-package prep;
+/*
+You are given a set of coins S. In how many ways can you make sum N assuming you have infinite amount of each coin in the set.
+
+Note : Coins in set S will be unique. Expected space complexity of this problem is O(N).
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;

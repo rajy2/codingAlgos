@@ -1,4 +1,6 @@
-package prep;
+/*
+Sort a linked list using insertion sort.
+*/
 
 public class sortInser {
 	public static void main(String[] args)

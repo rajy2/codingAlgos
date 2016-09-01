@@ -1,4 +1,13 @@
-package prep;
+/*
+Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+
+Each number in C may only be used once in the combination.
+
+ Note:
+All numbers (including target) will be positive integers.
+Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ? a2 ? … ? ak).
+The solution set must not contain duplicate combinations.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,12 +23,6 @@ public class combiSumII {
 		combiSumII o = new combiSumII();
 		Collections.sort(a);
 		ArrayList<ArrayList<Integer>> r = o.combinationSum(a, 28);
-		/*Collections.sort(r, new Comparator<ArrayList<Integer>>() {
-			public int compare(ArrayList<Integer> a, ArrayList<Integer> b)
-			{
-				return Integer.valueOf(b.size()).compareTo(a.size());
-			}
-		});*/
 		for(ArrayList<Integer> res: r)
 		{
 			for(Integer z:res)
@@ -38,8 +41,7 @@ public class combiSumII {
 		return res;
 	}
 
-	private void getComboS(ArrayList<Integer> a, int b, ArrayList<ArrayList<Integer>> res, int i,
-			ArrayList<Integer> temp) {
+	private void getComboS(ArrayList<Integer> a, int b, ArrayList<ArrayList<Integer>> res, int i,ArrayList<Integer> temp) {
 		if(b==0)
 		{
 			ArrayList<Integer> t = new ArrayList<>(temp);

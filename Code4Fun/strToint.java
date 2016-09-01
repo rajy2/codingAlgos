@@ -1,4 +1,6 @@
-package prep;
+/*
+Implement atoi to convert a string to an integer.
+*/
 
 public class strToint {
 	public static void main(String[] args)

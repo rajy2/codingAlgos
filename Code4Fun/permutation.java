@@ -1,4 +1,6 @@
-package prep;
+/*
+Given a collection of numbers, return all possible permutations.
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,40 +10,35 @@ public class permutation {
 	public static void main(String[] args)
 	{
 		permutation o = new permutation();
-		int[] num = {1,2,3};
+		ArrayList<Integer> num = new ArrayList<Integer>();
+           num.addAll(Arrays.asList(1,2,3));
 		o.permute(num);
 	}
-	public ArrayList<ArrayList<Integer>> permute(int[] num) {
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		permute(num, 0, result);
-		return result;
+	public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> a) {
+	    ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+	    if(a.size()==0) return res;
+	    permute(a,res,0);
+	    return res;
 	}
-	 
-	void permute(int[] num, int start, ArrayList<ArrayList<Integer>> result) {
-	 
-		if (start >= num.length) {
-			ArrayList<Integer> item = convertArrayToList(num);
-			result.add(item);
-		}
-	 
-		for (int j = start; j <= num.length - 1; j++) {
-			swap(num, start, j);
-			permute(num, start + 1, result);
-			swap(num, start, j);
-		}
+	private void permute(ArrayList<Integer> a,ArrayList<ArrayList<Integer>> res, int start)
+	{
+	    if(start>=a.size())
+	    {
+	        ArrayList<Integer> temp = new ArrayList<Integer>(a);
+	        res.add(temp);
+	        return;
+	    }
+	    for(int i = start; i<a.size();i++)
+	    {
+	        if(i!=start)swap(i,start,a);
+	        permute(a,res,start+1);
+	        if(i!=start)swap(i,start,a);
+	    }
 	}
-	 
-	private ArrayList<Integer> convertArrayToList(int[] num) {
-		ArrayList<Integer> item = new ArrayList<Integer>();
-		for (int h = 0; h < num.length; h++) {
-			item.add(num[h]);
-		}
-		return item;
-	}
-	 
-	private void swap(int[] a, int i, int j) {
-		int temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
+	private void swap(int i, int j, ArrayList<Integer> a)
+	{
+	    int tmp = a.get(i);
+	    a.set(i,a.get(j));
+	    a.set(j,tmp);
 	}
 }

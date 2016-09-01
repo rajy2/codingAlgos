@@ -1,4 +1,18 @@
-package prep;
+/*
+Given a binary tree
+
+    struct TreeLinkNode {
+      TreeLinkNode *left;
+      TreeLinkNode *right;
+      TreeLinkNode *next;
+    }
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+Initially, all next pointers are set to NULL.
+
+ Note:
+You may only use constant extra space.
+*/
 
 class TreeLinkNode {
      int val;
@@ -74,38 +88,7 @@ public class PopulateNextTree {
 
         }
     }
-	 /*
-	    TreeLinkNode lastHead = root;//prevous level's head 
-	    TreeLinkNode lastCurrent = null;//previous level's pointer
-	    TreeLinkNode currentHead = null;//currnet level's head 
-	    TreeLinkNode current = null;//current level's pointer
 	 
-	      while(lastHead!=null){
-	        lastCurrent = lastHead;
-	 
-	        while(lastCurrent!=null){
-	            if(currentHead == null){
-	                currentHead = lastCurrent.left;
-	                current = lastCurrent.left;
-	            }else{
-	                current.next = lastCurrent.left;
-	                current = current.next;
-	            }
-	 
-	            if(currentHead != null){
-	                current.next = lastCurrent.right;
-	                current = current.next;
-	            }
-	 
-	            lastCurrent = lastCurrent.next;
-	        }
-	 
-	        //update last head
-	        lastHead = currentHead;
-	        currentHead = null;
-	    }
-	   */
-	 
-	}
+}
 
 
